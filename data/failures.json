@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ENG-001",
+    "name": "Tacoma Narrows Bridge",
+    "date": "1940-11-07",
+    "domain": "Civil Engineering",
+    "failure_mode": "Aeroelastic Flutter",
+    "causal_factors": ["Design", "Aerodynamics", "Material Fatigue"],
+    "description": "Suspension bridge collapse caused by aeroelastic flutter under 42mph winds.",
+    "lessons_learned": "Bridges must be tested for aerodynamic stability; simple structural strength is not enough.",
+    "severity": "High",
+    "source": "https://en.wikipedia.org/wiki/Tacoma_Narrows_Bridge_(1940)"
+  },
+  {
+    "id": "ENG-002",
+    "name": "Chernobyl Disaster",
+    "date": "1986-04-26",
+    "domain": "Nuclear Engineering",
+    "failure_mode": "Steam Explosion / Meltdown",
+    "causal_factors": ["Design Flaw", "Human Error", "Safety Culture"],
+    "description": "RBMK reactor explosion during a poorly managed safety test.",
+    "lessons_learned": "Safety systems must never be overridden; positive void coefficient designs are inherently dangerous.",
+    "severity": "Catastrophic",
+    "source": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+  },
+  {
+    "id": "ENG-003",
+    "name": "Boeing 737 MAX MCAS",
+    "date": "2018-10-29",
+    "domain": "Aerospace / Software",
+    "failure_mode": "Unintended Control Activation",
+    "causal_factors": ["Software Bug", "Sensor Failure", "Insufficient Training"],
+    "description": "MCAS system repeatedly pushed nose down due to single sensor failure.",
+    "lessons_learned": "Redundant sensors are mandatory for flight-critical software; automated systems must have manual overrides.",
+    "severity": "Catastrophic",
+    "source": "https://en.wikipedia.org/wiki/Boeing_737_MAX_groundings"
+  },
+  {
+    "id": "ENG-004",
+    "name": "Deepwater Horizon",
+    "date": "2010-04-20",
+    "domain": "Petroleum Engineering",
+    "failure_mode": "Blowout",
+    "causal_factors": ["Equipment Failure", "Corporate Negligence", "Regulatory Failure"],
+    "description": "Oil well blowout leading to the largest marine oil spill in history.",
+    "lessons_learned": "Blowout preventers must be regularly tested; speed should never prioritize safety in drilling.",
+    "severity": "Catastrophic",
+    "source": "https://en.wikipedia.org/wiki/Deepwater_Horizon_oil_spill"
+  }
+]
