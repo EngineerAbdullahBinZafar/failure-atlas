@@ -1,0 +1,25 @@
+# Failure Atlas
+
+> Structured, machine-readable repository and analytical query engine of historical engineering disasters and mechatronic failure case studies (1800–2024), featuring quantitative FMEA Risk Priority Numbers (RPN), MIL-STD-1629A criticality, and 5-state Continuous-Time Markov Chain reliability modeling.
+
+## Documentation
+- [Knowledgebase Overview](README.md): System taxonomy, historical case study coverage, research motivations, and command-line usage.
+- [Failure Database](data/failures.json): Curated JSON database of structured failure records spanning Aerospace, Robotics, Embedded Systems, Mechatronics, and Software.
+- [Query Engine Core](failure_atlas/core.py): Python analytical library for domain filtering, causal factor retrieval, keyword search, and Markdown export.
+
+## Architecture & Core Modules
+- [Taxonomy Classifier](data/failures.json): Multi-dimensional classification across domain, subsystem, severity level, symptoms, root cause, and mitigations.
+- [FMEA & Criticality Analysis](README.md#quantitative-fmea-risk-priority-number-rpn-formulation): Risk Priority Number ($RPN = S \times O \times D$) and failure mode criticality number ($C_m = \alpha \beta \lambda_p t$).
+- [Continuous-Time Markov Chains](README.md#3-5-state-continuous-time-markov-chain-ctmc-reliability-model): 5-state reliability model ($\mathcal{N}, \mathcal{D}, \mathcal{F}, \mathcal{C}, \mathcal{E}$) with infinitesimal generator matrix $Q$ and steady-state balance equations $\boldsymbol{\pi} Q = \mathbf{0}$.
+
+## APIs & Methods
+- [Database Initialization](failure_atlas/core.py#L11): `FailureAtlas(data_path=None)`
+- [Domain Search](failure_atlas/core.py#L21): `FailureAtlas.search_by_domain(domain)`
+- [Causal Factor Query](failure_atlas/core.py#L25): `FailureAtlas.search_by_causal_factor(factor)`
+- [Full-Text Search](failure_atlas/core.py#L33): `FailureAtlas.search_keyword(query)`
+- [Multi-Field Filter](failure_atlas/core.py#L43): `FailureAtlas.filter(severity, domain, subsystem)`
+- [Markdown Exporter](failure_atlas/core.py#L57): `FailureAtlas.export_markdown_summary()`
+
+## Optional
+- [Interactive CLI Tool](failure_atlas/core.py#L70): Command-line diagnostic interface for rapid failure post-mortem exploration.
+- [Verification Test Suite](test/test_atlas.py): Automated pytest suite validating dataset integrity, search indexing, severity filters, and markdown serialization.
