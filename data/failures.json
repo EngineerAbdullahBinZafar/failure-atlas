@@ -75,5 +75,60 @@
     "root_cause": "ADC sampled at 100Hz without hardware analog anti-aliasing filter while mechanical vibration frequency was at 180Hz.",
     "causal_factors": ["Aliasing", "Nyquist Rate", "DSP", "ADC Sampling"],
     "mitigation": "Added 2nd-order analog RC low-pass filter (fc=40Hz) prior to ADC input pins and increased ADC sampling rate to 1kHz."
+  },
+  {
+    "id": "FAIL-AERO-008",
+    "title": "Ariane 5 Flight 501 64-bit to 16-bit Floating-Point Conversion Overflow",
+    "domain": "Aerospace",
+    "subsystem": "Inertial Reference System (SRI)",
+    "severity": "Catastrophic",
+    "symptom": "Rocket veered off flight path at 37 seconds post-launch, aerodynamic loads caused vehicle breakup and self-destruction.",
+    "root_cause": "Reuse of Ariane 4 software where horizontal bias variable exceeded 16-bit signed integer limits (+32,767); uncaught operand error halted both active and backup computers.",
+    "causal_factors": ["Software Reuse", "Integer Overflow", "Exception Handling", "Requirements Verification"],
+    "mitigation": "Mandate explicit software range validation across all trajectory parameters and eliminate unhandled hardware trap resets during flight."
+  },
+  {
+    "id": "FAIL-AERO-009",
+    "title": "Mars Climate Orbiter Trajectory Disintegration from Metric-Imperial Unit Mismatch",
+    "domain": "Aerospace",
+    "subsystem": "Orbital Navigation",
+    "severity": "Catastrophic",
+    "symptom": "Spacecraft entered Martian atmosphere at 57 km altitude instead of expected 226 km and disintegrated.",
+    "root_cause": "Ground software emitted thruster impulse commands in pound-force seconds (lbf·s) while spacecraft flight navigation expected metric newton-seconds (N·s).",
+    "causal_factors": ["Unit Conversion", "System Integration", "Verification", "Aerospace Trajectory"],
+    "mitigation": "Enforce static type checking with dimensionally-typed units (e.g. C++ std::chrono / Boost.Units) and end-to-end interface contracts."
+  },
+  {
+    "id": "FAIL-MED-010",
+    "title": "Therac-25 Radiation Therapy Massive Overdose from Race Condition",
+    "domain": "Medical Robotics",
+    "subsystem": "Radiation Therapy Software",
+    "severity": "Catastrophic",
+    "symptom": "Patients received massive radiation doses (>100x target) causing severe radiation burns and fatalities.",
+    "root_cause": "Concurrent operator keystroke editing bypassed software safety interlock flag while physical tungsten beam collimator was still moving.",
+    "causal_factors": ["Race Condition", "Missing Hardware Interlock", "Safety-Critical UI", "Therac-25"],
+    "mitigation": "Require independent hardware interlocks for safety-critical actuators; formal mathematical verification for concurrent state transitions."
+  },
+  {
+    "id": "FAIL-MIL-011",
+    "title": "MIM-104 Patriot Missile Clock Drift Battery Intercept Failure at Dhahran",
+    "domain": "Defense Systems",
+    "subsystem": "Radar Tracking Computer",
+    "severity": "Catastrophic",
+    "symptom": "Patriot missile battery failed to track and intercept incoming Scud missile, resulting in 28 casualties.",
+    "root_cause": "24-bit fixed-point register truncated internal system clock by 0.000000095 seconds per tick; after 100 hours of continuous operation, accumulated time shift was 0.34 seconds (687 meters range error).",
+    "causal_factors": ["Clock Drift", "Fixed Point Truncation", "Numerical Stability", "Long-Running Systems"],
+    "mitigation": "Use high-precision double-precision floating point or 64-bit integer tick counters with periodic clock synchronization."
+  },
+  {
+    "id": "FAIL-AERO-012",
+    "title": "Boeing 737 MAX Maneuvering Characteristics Augmentation System (MCAS) Single-Sensor Reliance",
+    "domain": "Aerospace",
+    "subsystem": "Flight Control System",
+    "severity": "Catastrophic",
+    "symptom": "Repeated uncommanded nose-down stabilizer trim activations overcoming pilot control column inputs.",
+    "root_cause": "MCAS flight control law relied on a single Angle-of-Attack (AoA) vane without sensor cross-comparison or disagree alert interlock.",
+    "causal_factors": ["Single Point of Failure", "Sensor Redundancy", "Control Law Override", "Human Factors"],
+    "mitigation": "Enforce multi-sensor tri-modular redundancy (TMR), cross-channel voting, and restrict authority limits of automatic flight control surfaces."
   }
 ]

@@ -15,6 +15,11 @@
 "Those who cannot remember the past are condemned to repeat it in production." — George Santayana
 ```
 
+```bash
+# ⚡ 1-Command Live Terminal Demonstration (Zero Dependencies)
+python demo.py
+```
+
 [Executive Overview](#-executive-overview) • [Mathematical Formulations](#-mathematical-formulations--reliability-models) • [Database Architecture](#-database-schema--failure-taxonomy) • [Python Query Engine](#-python-query-engine-api) • [CLI Diagnostics](#%EF%B8%8F-command-line-diagnostics) • [Verification](#-verification--empirical-test-suite)
 
 </div>
